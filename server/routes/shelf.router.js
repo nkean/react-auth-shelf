@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         let queryText = `INSERT INTO "item" ("description", "image_url", "person_id")
                         VALUES ($1, $2, $3)`;
-        pool.queryText(queryText, [req.body.description, req.body.image_url, req.user.id])
+        pool.query(queryText, [req.body.description, req.body.image_url, req.user.id])
             .then((result) => {
                 res.sendStatus(201);
             })
@@ -72,7 +72,7 @@ router.put('/:id', (req, res) => {
     if (req.isAuthenticated() && req.params.id === req.user.id) {
         let queryText = `UPDATE "item" SET "description" = $1, "image_url" = $2
                         WHERE "id" = $3`;
-        pool.queryText(queryText, [req.params.description, req.params.image_url, req.user.id])
+        pool.query(queryText, [req.params.description, req.params.image_url, req.user.id])
         .then((result) => {
             res.sendStatus(200)
         })
