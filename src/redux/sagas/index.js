@@ -8,8 +8,7 @@ export default function* rootSaga() {
   yield all([
     userSaga(),
     loginSaga(),
-    // postItem(),
+    postItem(),
     // watchIncrementAsync()
   ]);
-  yield takeEvery('ADD_ITEM', postItem);
 }

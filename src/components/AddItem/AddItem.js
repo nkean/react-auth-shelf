@@ -39,13 +39,13 @@ class AddItem extends Component {
   //action dispatch to SAGA 
   addNewItem = event => {
     event.preventDefault();
-    // const action = { type: 'ADD_ITEM', payload: this.state.newItem }
-    // this.props.dispatch(action);
-axios.post('/api/shelf', this.state.newItem).then(response => {
-    console.log(response);
-}).catch(error => {
-    console.log(error);
-})
+    const action = { type: 'ADD_ITEM', payload: this.state.newItem }
+    this.props.dispatch(action);
+// axios.post('/api/shelf', this.state.newItem).then(response => {
+//     console.log(response);
+// }).catch(error => {
+//     console.log(error);
+// })
     //clear fields after submission
     this.setState({
       newItem: {

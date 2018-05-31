@@ -11,4 +11,8 @@ function* postItem(action) {
     } catch  (error) {}
 }
 
-export default postItem;
+function* rootSaga()    {
+    yield takeEvery('ADD_ITEM', postItem);
+}
+
+export default rootSaga;
