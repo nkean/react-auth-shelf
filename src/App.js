@@ -11,12 +11,17 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+// import TotalItemsForUser from './components/TotalItemsForUser/TotalItemsForUser';
+// import ShelfPage from './components/ShelfPage/ShelfPage';
+
 
 import './styles/main.css';
+import AddItem from './components/AddItem/AddItem';
 
 const App = () => (
   <div>
     <Header title="Project Base" />
+
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -36,6 +41,18 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        {/* <Route
+          path="/shelf"
+          component={ShelfPage}
+        /> */}
+        <Route
+          path="/add"
+          component={AddItem}
+        />
+        {/* <Route
+          path="/count"
+          component={TotalItemsForUser}
+        /> */}
       </Switch>
     </Router>
   </div>
