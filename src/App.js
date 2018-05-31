@@ -13,6 +13,7 @@ import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 
 import './styles/main.css';
+import TotalItemsForUser from './components/TotalItemsForUser/TotalItemsForUser';
 
 const App = () => (
   <div>
@@ -35,6 +36,10 @@ const App = () => (
         <Route
           path="/info"
           component={InfoPage}
+        />
+        <Route
+          path="/count"
+          component={TotalItemsForUser}
         />
       </Switch>
     </Router>

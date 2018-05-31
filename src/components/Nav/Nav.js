@@ -15,6 +15,11 @@ const Nav = () => (
             Info Page
           </Link>
         </li>
+          <li>
+          <Link to="/count">
+            Total Count
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
