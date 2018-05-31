@@ -91,6 +91,6 @@ class AddItem extends Component {
     );
   }
 }
-
+// comment blah
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(AddItem);
