@@ -6,9 +6,9 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
+    console.log('GET all route');
     if (req.isAuthenticated()) {
         let queryText = `SELECT * FROM "item"`;
-        console.log('item queryText', queryText)
         pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -46,11 +46,11 @@ router.post('/', (req, res) => {
 /**
  * Delete an item if it's something the logged in user added
  */
-router.delete('/:id', (req, res) => {
+router.delete('/', (req, res) => {
     console.log('DELETE item route');
-    if (req.isAuthenticated() && req.query.person_id === req.user.id) {
+    if (req.isAuthenticated() && req.query.person_id == req.user.id) {
         let queryText = `DELETE FROM "item" WHERE "id" = $1`;
-        pool.queryText(queryText, [req.query.id])
+        pool.query(queryText, [req.query.id])
             .then((result) => {
                 res.sendStatus(200)
             })
