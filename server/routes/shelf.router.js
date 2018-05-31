@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
         let queryText = `SELECT * FROM "item"`;
         console.log('item queryText', queryText)
-        pool.query(queryText).then((result) => {
+        pool.query(queryText)
+        .then((result) => {
             res.send(result.rows);
         }).catch((error) => {
             console.log('error on item GET: ', error);
