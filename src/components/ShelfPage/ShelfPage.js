@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import Nav from '../../components/Nav/Nav';
 import { fetchUser } from '../../redux/actions/userActions';
+import ShelfItem from '../ShelfItem/ShelfItem';
+
+import '../ShelfPage/ShelfPage.css';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -63,8 +66,12 @@ class ShelfPage extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div>
-          {this.state.shelfList.map(item => <p key={item.id}>{item.description}  <button onClick={() => this.deleteItem(item)}>Delete</button></p>)}
+        <div className="Shelf">
+          {this.state.shelfList.map(item =>
+          <ShelfItem key= {item.id}
+          item = {item}
+          delete = {this.deleteItem} />
+          )}
         </div>
       );
     }
