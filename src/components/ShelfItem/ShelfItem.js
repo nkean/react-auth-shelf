@@ -20,7 +20,7 @@ class ShelfItem extends Component {
           <img src={this.props.item.image_url} />
           <div className="container">
             <p>{this.props.item.description}</p>
-            <button onClick={() => this.props.delete(this.props.item.id)}>Delete</button>
+            <button onClick={() => this.props.delete(this.props.item)}>Delete</button>
           </div>
         </div>
       </div>
