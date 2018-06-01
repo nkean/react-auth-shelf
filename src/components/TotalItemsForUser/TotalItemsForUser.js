@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { fetchUser } from '../../redux/actions/userActions';
+import Nav from '../../components/Nav/Nav';
+import './TotalItemsForUser.css';
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = {
-  fetchUser,
-};
 
 class TotalItemsForUser extends Component {
     constructor(props) {
@@ -22,24 +17,17 @@ class TotalItemsForUser extends Component {
 
     componentDidMount() {
         console.log('this.state:', this.state)
-        this.props.fetchUser();
         this.getTotalItems();
     }
 
 
-   getTotalItems = () => {
+    getTotalItems = () => {
         axios.get('/api/shelf/count').then((response) => {
-    // getTotalItems = () => {
-    //     axios({
-    //         method: 'GET',
-    //         url: '/api/count'
-    //     })
-            // .then((response) => {
-                console.log('GET response from /count:', response);
-                this.setState({
-                    totalItems: response.data
-                })
+            console.log('GET response from /count:', response);
+            this.setState({
+                totalItems: response.data
             })
+        })
             .catch((error) => {
                 console.log('error on GET from /count:', error)
             })
@@ -49,10 +37,28 @@ class TotalItemsForUser extends Component {
         console.log(this.state)
         return (
             <div>
-                {JSON.stringify(this.state.totalItems)}
+                <Nav />
+                {/* {JSON.stringify(this.state.totalItems)} */}
+                <div id="totalItemsList">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Number of items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.totalItems.map((item) =>
+                                <tr key={item.id}>
+                                    <td>{item.username}</td>
+                                    <td>{item.count}</td></tr>)}
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         )
     }
 };
 
-export default connect (mapStateToProps, mapDispatchToProps)(TotalItemsForUser);
+export default connect()(TotalItemsForUser);
