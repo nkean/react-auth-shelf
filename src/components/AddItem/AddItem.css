@@ -1,0 +1,30 @@
+.button {
+    padding: 8px;
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    align-content: space-around;
+
+}
+
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.dammitButton    {
+    align-content: space-around;
+    margin-right: 8px;
+}
+
+.add-item-container    {
+    text-align: center;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-family: 'Courier New';
+    box-sizing: border-box;
+}

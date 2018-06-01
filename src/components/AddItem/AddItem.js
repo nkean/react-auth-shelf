@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { fetchUser } from '../../redux/actions/userActions';
 import axios from 'axios';
+import './AddItem.css';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -41,11 +42,11 @@ class AddItem extends Component {
     event.preventDefault();
     const action = { type: 'ADD_ITEM', payload: this.state.newItem }
     this.props.dispatch(action);
-// axios.post('/api/shelf', this.state.newItem).then(response => {
-//     console.log(response);
-// }).catch(error => {
-//     console.log(error);
-// })
+    // axios.post('/api/shelf', this.state.newItem).then(response => {
+    //     console.log(response);
+    // }).catch(error => {
+    //     console.log(error);
+    // })
     //clear fields after submission
     this.setState({
       newItem: {
@@ -72,12 +73,13 @@ class AddItem extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div className="add-item-container">
 
           <form onSubmit={this.addNewItem}>
-            add a description: <input onChange={this.handleChange('description')} value={this.state.newItem.description} placeholder='description here' />
-            add an image url: <input onChange={this.handleChange('image_url')} value={this.state.newItem.image_url} placeholder='image url here' />
-            <input type="submit" value="DEPLOY IT" />
+            add a description: <input className="input" onChange={this.handleChange('description')} value={this.state.newItem.description} placeholder='description here' />
+            <br />
+            add an image url: <input className="input" onChange={this.handleChange('image_url')} value={this.state.newItem.image_url} placeholder='image url here' />
+          <input className="button" type="submit" value="DEPLOY IT" />
           </form>
         </div>
       );
