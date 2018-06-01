@@ -6,9 +6,9 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
+    console.log('GET all route');
     if (req.isAuthenticated()) {
         let queryText = `SELECT * FROM "item"`;
-        console.log('item queryText', queryText)
         pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         let queryText = `INSERT INTO "item" ("description", "image_url", "person_id")
                         VALUES ($1, $2, $3)`;
-        pool.queryText(queryText, [req.body.description, req.body.image_url, req.user.id])
+        pool.query(queryText, [req.body.description, req.body.image_url, req.user.id])
             .then((result) => {
                 res.sendStatus(201);
             })
@@ -46,11 +46,11 @@ router.post('/', (req, res) => {
 /**
  * Delete an item if it's something the logged in user added
  */
-router.delete('/:id', (req, res) => {
+router.delete('/', (req, res) => {
     console.log('DELETE item route');
-    if (req.isAuthenticated() && req.query.person_id === req.user.id) {
+    if (req.isAuthenticated() && req.query.person_id == req.user.id) {
         let queryText = `DELETE FROM "item" WHERE "id" = $1`;
-        pool.queryText(queryText, [req.query.id])
+        pool.query(queryText, [req.query.id])
             .then((result) => {
                 res.sendStatus(200)
             })
@@ -72,7 +72,7 @@ router.put('/:id', (req, res) => {
     if (req.isAuthenticated() && req.params.id === req.user.id) {
         let queryText = `UPDATE "item" SET "description" = $1, "image_url" = $2
                         WHERE "id" = $3`;
-        pool.queryText(queryText, [req.params.description, req.params.image_url, req.user.id])
+        pool.query(queryText, [req.params.description, req.params.image_url, req.user.id])
         .then((result) => {
             res.sendStatus(200)
         })
