@@ -37,10 +37,6 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
-        <Route
-          path="/count"
-          component={TotalItemsForUser}
-        />
       </Switch>
     </Router>
   </div>

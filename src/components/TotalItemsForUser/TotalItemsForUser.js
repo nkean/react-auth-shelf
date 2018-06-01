@@ -28,7 +28,7 @@ class TotalItemsForUser extends Component {
 
 
    getTotalItems = () => {
-        axios.get('/api/count').then((response) => {
+        axios.get('/api/shelf/count').then((response) => {
     // getTotalItems = () => {
     //     axios({
     //         method: 'GET',
