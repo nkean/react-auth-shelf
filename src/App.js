@@ -11,12 +11,11 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-// import TotalItemsForUser from './components/TotalItemsForUser/TotalItemsForUser';
-// import ShelfPage from './components/ShelfPage/ShelfPage';
-
+import TotalItemsForUser from './components/TotalItemsForUser/TotalItemsForUser';
+import ShelfPage from './components/ShelfPage/ShelfPage';
+import AddItem from './components/AddItem/AddItem';
 
 import './styles/main.css';
-import AddItem from './components/AddItem/AddItem';
 
 const App = () => (
   <div>
@@ -41,18 +40,18 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
-        {/* <Route
+        <Route
           path="/shelf"
           component={ShelfPage}
-        /> */}
+        />
         <Route
           path="/add"
           component={AddItem}
         />
-        {/* <Route
+        <Route
           path="/count"
           component={TotalItemsForUser}
-        /> */}
+        />
       </Switch>
     </Router>
   </div>
